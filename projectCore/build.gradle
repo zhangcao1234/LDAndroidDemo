@@ -1,0 +1,63 @@
+apply from: "${rootProject.rootDir}/config.gradle"
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions' //启用扩展支持直接使用ID
+apply plugin: 'kotlin-kapt'
+android {
+    project.ext.setDefaultConfig project
+    //这个就是指定kotlin使用java8
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+        buildConfigField "String", "CHANNEL_ID", '"11800"'
+        buildConfigField "String", "SUN_CHANNEL_ID", '"11801"'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        debug {
+
+            buildConfigField "Boolean", "IS_DEBUG", "true"
+        }
+        release {
+            buildConfigField "Boolean", "IS_DEBUG", "false"
+            minifyEnabled true
+
+        }
+    }
+}
+
+dependencies {
+    api project(':baselib:core')
+    api project(':baselib:router')
+    api project(':baselib:download')
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    //屏幕适配
+    api 'me.jessyan:autosize:1.1.2'
+    api 'com.jaeger.statusbarutil:library:1.5.1'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    kapt "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
+    //黄油刀
+    kapt "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+}

@@ -1,0 +1,7 @@
+include ':component:mine'
+include ':component:mian'
+include ':component'
+include ':projectCore'
+include ':app', ':baselib', ':baselib:router', ':baselib:core',':baselib:download'
+rootProject.name = "LDAndroidDemo"
+include ':commonLib'

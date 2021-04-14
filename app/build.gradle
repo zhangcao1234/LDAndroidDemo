@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply from: "${rootProject.rootDir}/config.gradle"
+apply plugin: 'com.jakewharton.butterknife'
+android {
+    //调动config.gradle配置
+    project.ext.setDefaultConfig project
+
+    defaultConfig {
+
+        flavorDimensions "default"
+        applicationId rootProject.ext.applicationId
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        //MultiDex分包方法
+        multiDexEnabled true
+        //Arouter路由配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+        //目录指向配置
+        sourceSets {
+            //设置依赖so库路径
+            main.jniLibs.srcDirs = ['libs']
+        }
+
+        ndk {
+            // 设置支持的SO库架构(cpu)
+            abiFilters 'armeabi', 'armeabi-v7a', "x86", "mips"
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        signingConfigs {
+            myConfig {
+               // storeFile file(KEYSTORE_FILE)
+                storePassword KEYSTORE_PWD
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PWD
+            }
+
+        }
+
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+           // signingConfig signingConfigs.myConfig
+        }
+        release {
+           // signingConfig signingConfigs.myConfig
+            minifyEnabled true
+            //是否清理无用资源,依赖于minifyEnabled
+            shrinkResources true
+            //是否启用zipAlign压缩
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':projectCore')
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    if (!isModule.toBoolean()) {
+        implementation project(':component:mine')
+        implementation project(':component:mian')
+    }
+}

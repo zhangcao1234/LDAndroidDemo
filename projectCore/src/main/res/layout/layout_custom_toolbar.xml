@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/head"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingEnd="15dp"
+        android:paddingStart="@dimen/dp_10"
+        android:src="@drawable/ic_back"/>
+
+    <TextView
+        android:id="@+id/tv_center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:textColor="@color/color_222222"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="在有些低版本的手机上，首次加载页面的时候是正确获取到了 title，但是当 goback 返回之后发现 title 并没有自动的变回去，还是上一个页面的 title。这可如何是好，在网上找了找，找到了一个解决方案，试了下，发现可行，遂记录下来。"/>
+
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="6dp"
+        android:gravity="center"
+        android:paddingLeft="6dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/color_222222"
+        android:textSize="13sp"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

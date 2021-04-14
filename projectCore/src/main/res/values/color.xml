@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_yellow">#FFD500</color>
+    <color name="text_yellow">#FEBC00</color>
+    <color name="color_text">#333333</color>
+    <color name="white">#ffffff</color>
+    <color name="bg_divider_line">#cccccc</color>
+    <color name="gray">#99333333</color>
+    <color name="eeeeee">#eeeeee</color>
+    <color name="theme_body">#cc22292c</color>
+    <color name="black">#000000</color>
+    <color name="status_bar">#303135</color>
+    <color name="top_bar">#9f556061</color>
+    <color name="transparent">#00000000</color>
+    <color name="hobay_red">#ff4b00</color>
+    <color name="btn_enabled">#e0e0e0</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="btn_pressed">#e54500</color>
+    <color name="lighter_gray">#ddd</color>
+    <color name="_406599">#406599</color>
+    <color name="color_6000000">#60000000</color>
+    <color name="color_gvip">#D040D5</color>
+    <color name="color_222222">#222222</color>
+    <color name="color_BDBDBD">#BDBDBD</color>
+    <color name="color_9F9F9F">#9F9F9F</color>
+    <color name="color_BEBEBE">#BEBEBE</color>
+    <color name="color_E1E1E1">#E1E1E1</color>
+    <color name="color_f5f5f5">#F5F5F5</color>
+    <color name="color_FF6600">#FF6600</color>
+    <color name="color_1A000000">#E6000000</color>
+    <color name="color_80754D">#80754D</color>
+    <color name="color_D974F8">#D974F8</color>
+    <color name="color_694D80">#694D80</color>
+    <color name="color_F5F3EB">#F5F3EB</color>
+    <color name="color_40B0EB">#40B0EB</color>
+
+</resources>

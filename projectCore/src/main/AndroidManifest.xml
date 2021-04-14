@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ld.projectcore">
+<application>
+    <activity
+        android:name=".base.view.CommonActivity"
+        android:configChanges="orientation|screenSize|keyboardHidden"
+        android:exported="true"
+        android:hardwareAccelerated="true"
+        android:screenOrientation="portrait">
+    </activity>
+</application>
+
+</manifest>
